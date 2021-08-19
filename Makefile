@@ -1,7 +1,12 @@
-.Phony: image-build
- image-build:
-	docker build -t test_postgres docker/
+.Phony: compose build_images build_db_image build_app_image
 
-.Phony: compose
+build_images: | build_db_image build_app_image
+
+build_db_image:
+	docker build -t test_postgres docker/db/
+
+build_app_image:
+	docker build -t test_postgres docker/db/
+
 compose:
 	docker-compose -p pipline_test -f docker/docker-compose.yaml up -d
