@@ -6,7 +6,7 @@ build_db_image:
 	docker build -t test_postgres docker/db/
 
 build_app_image:
-	docker build -t test_app .
+	docker build -t test_app -f docker/app/Dockerfile .
 
 compose:
 	docker-compose -p pipline_test -f docker/docker-compose.yaml up -d
