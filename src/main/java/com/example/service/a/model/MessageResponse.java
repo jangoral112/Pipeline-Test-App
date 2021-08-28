@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class MessageResponse implements Serializable {
 
     @Getter
-    private String message;
+    private final String message;
 
     public MessageResponse(String message) {
         this.message = message;
