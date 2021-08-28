@@ -1,8 +1,8 @@
 package com.example.service.a.service;
 
 import com.example.service.a.model.Book;
+import com.example.service.a.model.BookResponse;
 import com.example.service.a.repository.BookRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public Book postBook() {
+    public String postBook() {
 
         var book = Book.builder()
                 .author("Jan")
@@ -20,13 +20,20 @@ public class BookService {
                 .pagesNumber(45)
                 .build();
 
-        return bookRepository.save(book);
+        var savedBook = bookRepository.save(book);
+
+        return savedBook.getId() != null? "Book successfully saved" : "Saving book failed";
     }
 
-    public Book getBook(Long id) {
+    public BookResponse getBook(Long id) {
 
-        var optionalBook = bookRepository.findById(id);
+        var book = bookRepository.findById(id).get();
 
-        return optionalBook.get();
+        return BookResponse.builder()
+                .id(book.getId())
+                .title(book.getTitle())
+                .author(book.getAuthor())
+                .pagesNumber(book.getPagesNumber())
+                .build();
     }
 }

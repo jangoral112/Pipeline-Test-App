@@ -1,6 +1,7 @@
 package com.example.service.a.controller;
 
 import com.example.service.a.model.Book;
+import com.example.service.a.model.BookResponse;
 import com.example.service.a.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +17,13 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/")
-    public ResponseEntity<Book> postBook() {
-        var book = bookService.postBook();
-        return ResponseEntity.ok(book);
+    public ResponseEntity<String> postBook() {
+        var response = bookService.postBook();
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Book> getBook(@PathVariable("id") Long id) {
+    public ResponseEntity<BookResponse> getBook(@PathVariable("id") Long id) {
         var book = bookService.getBook(id);
         return ResponseEntity.ok(book);
     }
