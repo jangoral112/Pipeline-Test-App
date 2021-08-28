@@ -1,14 +1,12 @@
 package com.example.service.a.controller;
 
-import com.example.service.a.model.Book;
+import com.example.service.a.model.BookRequest;
 import com.example.service.a.model.BookResponse;
+import com.example.service.a.model.MessageResponse;
 import com.example.service.a.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class BookController {
@@ -17,9 +15,9 @@ public class BookController {
     private BookService bookService;
 
     @PostMapping("/")
-    public ResponseEntity<String> postBook() {
-        var response = bookService.postBook();
-        return ResponseEntity.ok(response);
+    public ResponseEntity<MessageResponse> postBook(@RequestBody BookRequest bookRequest) {
+        var messageResponse = bookService.postBook(bookRequest);
+        return ResponseEntity.ok(messageResponse);
     }
 
     @GetMapping("/{id}")
