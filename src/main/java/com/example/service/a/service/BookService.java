@@ -1,5 +1,6 @@
 package com.example.service.a.service;
 
+import com.example.service.a.exception.BookNotFoundException;
 import com.example.service.a.model.entity.Book;
 import com.example.service.a.model.dto.BookRequest;
 import com.example.service.a.model.dto.BookResponse;
@@ -24,13 +25,22 @@ public class BookService {
 
         var savedBook = bookRepository.save(book);
 
-        var responseMessage = savedBook.getId() != null ? "Book successfully saved" : "Saving book failed";
-        return new MessageResponse(responseMessage);
+        if(savedBook.getId() != null) {
+            return new MessageResponse("Book successfully saved");
+        }
+
+       throw new RuntimeException("Saving book failed");
     }
 
     public BookResponse getBook(Long id) {
 
-        var book = bookRepository.findById(id).get();
+        var optionalBook = bookRepository.findById(id);
+
+        if(optionalBook.isEmpty()) {
+            throw new BookNotFoundException("Book not found");
+        }
+
+        var book = optionalBook.get();
 
         return BookResponse.builder()
                 .id(book.getId())
