@@ -28,11 +28,6 @@ public class BookServiceTest {
     private BookService bookService;
 
     @Test
-    public void shouldFail() {
-        fail("Should fail");
-    }
-
-    @Test
     public void shouldReturnMessageResponseWhenPostBook() {
         // Given
         var bookRequest = BookRequest.builder()
