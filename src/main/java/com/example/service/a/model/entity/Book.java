@@ -1,18 +1,16 @@
-package com.example.service.a.model;
+package com.example.service.a.model.entity;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "book")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Book {
+@EqualsAndHashCode(callSuper = true)
+public class Book extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

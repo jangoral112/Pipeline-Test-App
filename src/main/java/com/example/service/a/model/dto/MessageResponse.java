@@ -1,4 +1,4 @@
-package com.example.service.a.model;
+package com.example.service.a.model.dto;
 
 import lombok.Getter;
 

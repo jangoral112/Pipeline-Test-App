@@ -1,4 +1,4 @@
-package com.example.service.a.model;
+package com.example.service.a.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,11 +11,14 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class BookRequest implements Serializable {
+public class BookResponse implements Serializable {
+
+    private Long id;
 
     private String title;
 
     private String author;
 
     private Integer pagesNumber;
+
 }

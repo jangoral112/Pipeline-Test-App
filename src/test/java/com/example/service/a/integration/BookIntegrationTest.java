@@ -1,6 +1,6 @@
 package com.example.service.a.integration;
 
-import com.example.service.a.model.BookRequest;
+import com.example.service.a.model.dto.BookRequest;
 import com.example.service.a.repository.BookRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.SneakyThrows;

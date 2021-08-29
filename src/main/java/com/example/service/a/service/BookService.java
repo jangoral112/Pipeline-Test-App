@@ -1,9 +1,9 @@
 package com.example.service.a.service;
 
-import com.example.service.a.model.Book;
-import com.example.service.a.model.BookRequest;
-import com.example.service.a.model.BookResponse;
-import com.example.service.a.model.MessageResponse;
+import com.example.service.a.model.entity.Book;
+import com.example.service.a.model.dto.BookRequest;
+import com.example.service.a.model.dto.BookResponse;
+import com.example.service.a.model.dto.MessageResponse;
 import com.example.service.a.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
