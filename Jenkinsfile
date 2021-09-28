@@ -16,9 +16,9 @@ pipeline {
             steps {
                 script {
                   try {
-                    sh ./gradlew clean test --no-daemon
+                    sh './gradlew clean test --no-daemon'
                   } finally {
-                    junit "**/build/test-results/test/*.xml"
+                    junit '**/build/test-results/test/*.xml'
                   }
                 }
             }
