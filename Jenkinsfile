@@ -14,7 +14,11 @@ pipeline {
         stage("test") {
 
             steps {
-                junit "**/build/test-results/test/*.xml"
+                try {
+                  sh ./gradlew clean test --no-daemon
+                } finally {
+                  junit "**/build/test-results/test/*.xml"
+                }
             }
         }
 
