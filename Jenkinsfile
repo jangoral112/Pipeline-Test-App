@@ -4,14 +4,20 @@ pipeline {
 
     stages {
 
-        stage("build") {
-
+        stage('clean') {
             steps {
-                echo "building the application..."
+              cleanWs()
             }
         }
 
-        stage("test") {
+        stage('build') {
+
+            steps {
+                echo 'building the application...'
+            }
+        }
+
+        stage('test') {
 
             steps {
                 script {
@@ -24,10 +30,10 @@ pipeline {
             }
         }
 
-        stage("deploy") {
+        stage('deploy') {
 
             steps {
-                echo "deploying the application..."
+                echo 'deploying the application...'
             }
         }
     }
