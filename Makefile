@@ -9,4 +9,4 @@ build_app_image:
 	docker build -t test_app -f docker/app/Dockerfile .
 
 compose:
-	docker-compose -p pipline_test -f docker/docker-compose.yaml up -d
+	docker-compose -p pipline_test -f docker/docker-compose.yaml up -d # TODO run --service-ports and override CMD

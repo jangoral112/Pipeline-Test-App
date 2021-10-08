@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  application:
+    image: test_app
+    container_name: service_a
+    ports:
+      - "8080:8080"
+    env_file:
+      - ../env-files/.env.dev
+    build:
+      context: ../
+      dockerfile: ./docker/app/Dockerfile
+    volumes:
+      - ./build/test-results:/app/build/test-results
+    networks:
+      - app
+
+networks:
+  app:
+    name: app_network

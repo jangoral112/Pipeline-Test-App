@@ -1,0 +1,7 @@
+.Phony: build run
+
+build: ./gradlew
+	./gradlew clean build -x test
+
+run: ./build/libs/ServiceA.jar
+	java -jar ./build/libs/ServiceA.jar
