@@ -13,9 +13,3 @@ services:
       dockerfile: ./docker/app/Dockerfile
     volumes:
       - ./build/test-results:/app/build/test-results
-    networks:
-      - app
-
-networks:
-  app:
-    name: app_network
