@@ -39,6 +39,7 @@ pipeline {
         }
 
         success {
+            echo "1235"
             script {
               sh "echo 123"
               sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
@@ -49,6 +50,7 @@ pipeline {
         }
 
         failure {
+            echo "1234"
             script {
               sh "echo 123"
               sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
