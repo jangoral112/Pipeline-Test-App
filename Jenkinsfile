@@ -40,18 +40,10 @@ pipeline {
 
         success {
             echo "1235"
-            sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
-                  \"timestamp\": \"2015-01-01T12:10:30Z\",
-                  \"build_status\": \"success\"
-            }"
         }
 
         failure {
             echo "1234"
-            sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
-                  \"timestamp\": \"2015-01-01T12:10:30Z\",
-                  \"build_status\": \"failure\"
-            }"
         }
     }
 }
