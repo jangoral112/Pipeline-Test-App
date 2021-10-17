@@ -39,17 +39,21 @@ pipeline {
         }
 
         success {
-            sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
-                  \"timestamp\": \"2015-01-01T12:10:30Z\",
-                  \"build_status\": \"success\"
-            }"
+            script {
+              sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
+                    \"timestamp\": \"2015-01-01T12:10:30Z\",
+                    \"build_status\": \"success\"
+              }"
+            }
         }
 
         failure {
-            sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
-                  \"timestamp\": \"2015-01-01T12:10:30Z\",
-                  \"build_status\": \"failure\"
-            }"
+            script {
+              sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
+                    \"timestamp\": \"2015-01-01T12:10:30Z\",
+                    \"build_status\": \"failure\"
+              }"
+            }
         }
 
         unstable {
