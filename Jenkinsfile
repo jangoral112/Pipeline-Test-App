@@ -11,6 +11,7 @@ pipeline {
                 echo "Building the application..."
                 sh "chmod 777 ./"
                 sh "docker-compose -p pipeline_test -f docker/docker-compose.ci.yaml up -d"
+                sh "docker-compose down"
             }
         }
 
