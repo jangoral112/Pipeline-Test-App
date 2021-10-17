@@ -40,37 +40,18 @@ pipeline {
 
         success {
             echo "1235"
-            script {
-              sh "echo 123"
-              sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
-                    \"timestamp\": \"2015-01-01T12:10:30Z\",
-                    \"build_status\": \"success\"
-              }"
-            }
+            sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
+                  \"timestamp\": \"2015-01-01T12:10:30Z\",
+                  \"build_status\": \"success\"
+            }"
         }
 
         failure {
             echo "1234"
-            script {
-              sh "echo 123"
-              sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
-                    \"timestamp\": \"2015-01-01T12:10:30Z\",
-                    \"build_status\": \"failure\"
-              }"
-            }
+            sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
+                  \"timestamp\": \"2015-01-01T12:10:30Z\",
+                  \"build_status\": \"failure\"
+            }"
         }
-
-        unstable {
-            script {
-              sh "echo unstable"
-            }
-        }
-
-        aborted {
-            script {
-              sh "echo aborted"
-            }
-        }
-
     }
 }
