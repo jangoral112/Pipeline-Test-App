@@ -34,5 +34,30 @@ pipeline {
         always {
             cleanWs()
         }
+
+        success {
+            script {
+              sh "echo success"
+            }
+        }
+
+        failure {
+            script {
+              sh "echo failure"
+            }
+        }
+
+        unstable {
+            script {
+              sh "echo unstable"
+            }
+        }
+
+        aborted {
+            script {
+              sh "echo aborted"
+            }
+        }
+
     }
 }
