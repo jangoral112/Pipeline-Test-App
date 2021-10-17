@@ -39,15 +39,17 @@ pipeline {
         }
 
         success {
-            script {
-              sh "echo success"
-            }
+            sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
+                  \"timestamp\": \"2015-01-01T12:10:30Z\",
+                  \"build_status\": \"success\"
+            }"
         }
 
         failure {
-            script {
-              sh "echo failure"
-            }
+            sh "curl -XPOST http://elastic/jenkins_data/_doc?pretty -d {
+                  \"timestamp\": \"2015-01-01T12:10:30Z\",
+                  \"build_status\": \"failure\"
+            }"
         }
 
         unstable {
