@@ -36,6 +36,7 @@ pipeline {
     post {
         always {
             cleanWs()
+            echo "5678"
         }
 
         success {
