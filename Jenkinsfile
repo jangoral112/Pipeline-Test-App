@@ -40,7 +40,7 @@ pipeline {
         always {
             script {
                 def now = new Date()
-                def formattedTimestamp = now.format("yyyy-MM-dd'T'HH:mm:ssZ", TimeZone.getTimeZone('UTC'))
+                def formattedTimestamp = now.getTime()
                 println formattedTimestamp
                 DEPLOY_TIMESTAMP = formattedTimestamp
             }
