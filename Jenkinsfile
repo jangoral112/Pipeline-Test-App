@@ -52,14 +52,14 @@ pipeline {
             echo "1235"
             echo "$DEPLOY_TIMESTAMP"
             echo "$BRANCH_NAME"
-            sh "curl --location --request POST 'http://devops-kpi-chapter1_elastic_1:9200/jenkins_data/_doc?pretty' --header 'Content-Type: application/json' --data-raw '{\"timestamp\": \"2018-01-01T12:10:30Z\",\"build_status\": \"success\"}'"
+            sh "curl --location --request POST 'http://devops-kpi-chapter1_elastic_1:9200/jenkins_data/_doc?pretty' --header 'Content-Type: application/json' --data-raw '{\"timestamp\": \"${DEPLOY_TIMESTAMP}\",\"build_status\": \"success\"}'"
         }
 
         failure {
             echo "1234"
             echo "$DEPLOY_TIMESTAMP"
             echo "$BRANCH_NAME"
-            sh "curl --location --request POST 'http://devops-kpi-chapter1_elastic_1:9200/jenkins_data/_doc?pretty' --header 'Content-Type: application/json' --data-raw '{\"timestamp\": \"2018-01-01T12:10:30Z\",\"build_status\": \"failure\"}'"
+            sh "curl --location --request POST 'http://devops-kpi-chapter1_elastic_1:9200/jenkins_data/_doc?pretty' --header 'Content-Type: application/json' --data-raw '{\"timestamp\": \"${DEPLOY_TIMESTAMP}\",\"build_status\": \"failure\"}'"
         }
     }
 }
