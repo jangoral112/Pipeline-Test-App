@@ -30,11 +30,11 @@ pipeline {
         stage("print env") {
 
             steps {
-                printenv
+                sh "printenv"
             }
         }
     }
-    
+
     post {
         always {
             cleanWs()
