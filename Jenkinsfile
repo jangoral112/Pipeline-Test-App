@@ -27,13 +27,14 @@ pipeline {
             }
         }
 
-        stage("deploy") {
+        stage("print env") {
 
             steps {
-                echo "deploying the application..."
+                printenv
             }
         }
     }
+    
     post {
         always {
             cleanWs()
