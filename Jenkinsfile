@@ -10,6 +10,7 @@ pipeline {
                 sh "pwd"
                 echo "Building the application..."
                 sh "chmod 777 ./"
+                sh "printenv"
                 sh "docker-compose -p pipeline_test -f docker/docker-compose.ci.yaml up -d"
                 sh "docker-compose -p pipeline_test -f docker/docker-compose.ci.yaml down"
             }
