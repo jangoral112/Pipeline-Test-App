@@ -20,7 +20,9 @@ pipeline {
             steps {
                 echo "testing the application..."
                 script {
-                  assert Math.random() > 0.5 : "Build failed because of random"
+                    def val = Math.random()
+                    echo "${val}"
+                    assert val > 0.5 : "Build failed because of random"
                 }
             }
         }
