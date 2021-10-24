@@ -38,6 +38,10 @@ pipeline {
 
     post {
         always {
+            script {
+                def now = new Date()
+                println now.format("yyMMdd.HHmm", TimeZone.getTimeZone('UTC'))
+            }
             cleanWs()
             echo "5678"
         }
