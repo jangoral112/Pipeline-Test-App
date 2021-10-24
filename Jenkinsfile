@@ -4,15 +4,14 @@ pipeline {
 
     stages {
 
-        stage("build") {
+        stage("test build") {
 
             steps {
                 sh "pwd"
                 echo "Building the application..."
                 sh "chmod 777 ./"
                 sh "docker-compose -p pipeline_test -f docker/docker-compose.ci.yaml up -d"
-                sh "docker rm -f service_a"
-                sh "docker network rm app_network"
+                sh "docker-compose -p pipeline_test -f docker/docker-compose.ci.yaml down"
             }
         }
 
