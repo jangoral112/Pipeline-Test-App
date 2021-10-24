@@ -40,7 +40,9 @@ pipeline {
         always {
             script {
                 def now = new Date()
-                println now.format("yyyy-MM-dd'T'HH:mm:ssZ", TimeZone.getTimeZone('UTC'))
+                def formattedTimestamp = now.format("yyyy-MM-dd'T'HH:mm:ssZ", TimeZone.getTimeZone('UTC'))
+                println formattedTimestamp
+                DEPLOY_TIMESTAMP = formattedTimestamp
             }
             cleanWs()
             echo "5678"
@@ -48,6 +50,8 @@ pipeline {
 
         success {
             echo "1235"
+            echo "$DEPLOY_TIMESTAMP"
+            echo "$BRANCH_NAME"
             sh "curl --location --request POST 'http://devops-kpi-chapter1_elastic_1:9200/jenkins_data/_doc?pretty' --header 'Content-Type: application/json' --data-raw '{\"timestamp\": \"2018-01-01T12:10:30Z\",\"build_status\": \"success\"}'"
         }
 
